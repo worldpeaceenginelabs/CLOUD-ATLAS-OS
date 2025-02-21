@@ -378,6 +378,7 @@ function handleCoordinatePick(result) {
       disableDepthTestDistance: Number.POSITIVE_INFINITY,
     }
   });
+  showModalButton = true;
 }
 
 // Debounce function to prevent multiple rapid touches
@@ -409,7 +410,7 @@ viewer.screenSpaceEventHandler.setInputAction(debounce(async function(click) {
   if (!Cesium.defined(pickedObject) || !pickedObject.id) return;
 
   if (pickedObject.id.id === "pickedPoint") {
-    openModalButton();
+    
   } else {
     await handleEntityPick(pickedObject);
   }

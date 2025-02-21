@@ -1,55 +1,16 @@
 <script>
-  import Brainstorming from "./Brainstorming.svelte";
-  import ActionEvent from "./ActionEvent.svelte";
-  import Petition from "./Petition.svelte";
-  import Crowdfunding from "./Crowdfunding.svelte";
+  import { coordinates } from '../../store.js';
 
   let showModal = false;
-  let currentComponent = null;
 
-  const components = {
-    Brainstorming,
-    ActionEvent,
-    Petition,
-    Crowdfunding,
-  };
-
-  function openModal(componentName) {
-    currentComponent = components[componentName];
-    showModal = true;
-  }
-
-  function closeModal() {
-    showModal = false;
-    currentComponent = null;
-  }
 </script>
 
 
 
 
-  <div style="padding: 20px;">
-    <div class="box glassmorphism" on:click={() => openModal("Brainstorming")}>
-      <div class="title">Brainstorming (Zoom.us)</div>
-      <div class="description">Collaborate with a diverse community to brainstorm innovative solutions to local and global challenges...</div>
-    </div>
-
-    <div class="box glassmorphism" on:click={() => openModal("ActionEvent")}>
-      <div class="title">ActionEvent (Telegram)</div>
-      <div class="description">Mobilize collective action to bring your ideas to life through organized community efforts...</div>
-    </div>
-
-    <div class="box glassmorphism" on:click={() => openModal("Petition")}>
-      <div class="title">Petition (Change.org)</div>
-      <div class="description">Advocate for change by securing the necessary permissions to improve public spaces and policies...</div>
-    </div>
-
-    <div class="box glassmorphism" on:click={() => openModal("Crowdfunding")}>
-      <div class="title">Crowdfunding (GoFundMe.com)</div>
-      <div class="description">Empower your vision by raising the funds needed to turn your ideas into impactful realities...</div>
-    </div>
-  </div>
-
+<div>Location</div>
+<div>{$coordinates.latitude}, {$coordinates.longitude}</div> 
+<div>decentralized government action</div>
 
 
 
@@ -72,11 +33,7 @@
         <span></span>
         </div>
         
-      {#if currentComponent}
-      <div style="padding: 20px;">
-        <svelte:component this={currentComponent} />
-      </div>
-        {/if}
+      
     </div>
   </div>
 {/if}
